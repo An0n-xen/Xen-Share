@@ -1,6 +1,7 @@
 # Xen-Share
 Simple software to share files between computers
 
+# Getting Started
 To run app
 1. Open Xen_share folder 
 2. Click on app.exe
