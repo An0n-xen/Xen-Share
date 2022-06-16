@@ -1,0 +1,127 @@
+{% extends 'layout2.html' %}
+{% block content %}
+
+<div class="grid">
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+            {% for message in messages%}
+        
+                <ul role="alert" class='alert alert-info' id="message">
+                    {{message}}
+                </ul>
+
+            {% endfor %}
+        {% endif %}
+    {% endwith%}
+
+    <div class="file-names">
+
+    </div>
+
+    <div class="first_part">
+        <form action="/upload" method='POST' enctype="multipart/form-data">
+            <div class="drop-zone">
+                <img src="/static/PC.png" alt="" width="430" height="380" id="pc_icon">
+                <span class="drop-zone_prompt"> Drop files here or Click to upload</span>
+                <input type="file" name="files[]" multiple="true"  id="drop-zone_input"  onmouseover="hover()" onmouseout="nohover()"  onchange="displayfiles()" required>
+            </div>
+            
+            <div>
+                <input type="submit" value="Upload" id="upload_btn" class='btn btn-outline-primary'>
+            
+                <div id="Progress_Status" class="position-relative">
+                    <div id="myprogressBar" class="position-absolute top-0 start-0"> <p id="progress_percent">0%</p> </div>
+                </div>
+                
+            </div>
+        </form>        
+    </div>
+
+</div>
+
+<script>
+
+    let drop_zone = document.querySelector('.drop-zone_prompt');
+    let input_files = document.querySelector('#drop-zone_input')
+    let div_file_name = document.querySelector('.file-names');
+
+    displayfiles = () => {
+        num_files = input_files.files.length;
+        div_file_name.innerHTML ='<strong>'+ ' * ' + num_files + '</strong>' + ': files prepared';         
+    };
+    
+    hover = () => {
+        drop_zone.style.border = '3px solid rgb(12,147,192)';
+    }
+
+    nohover = () => {
+        drop_zone.style.border = '3px dashed rgb(12,147,192)';
+    }
+
+
+    $(document).ready(function(){
+        $('form').on('submit',function(event){
+            event.preventDefault();
+
+            var formData = new FormData($('form')[0]);
+            var count = 0;
+            var start;
+            var change = 0;
+            $.ajax({
+
+                xhr : () => {
+                    var xhr = new window.XMLHttpRequest();
+
+                    xhr.upload.addEventListener('progress', (e)=>{
+                        
+                        if(e.lengthComputable){
+                      
+                            if(count != 1){
+                                var initial = e.loaded;
+                                start = initial;
+                                count = count + 1; 
+                            }
+                            var new_init = start;
+                            var final = e.loaded;
+                            change = (final-new_init);
+                            new_init = change;
+                            
+                            var speed = (final - new_init) / 0.005;
+                            console.log('Speed: ' + speed);
+
+                            var percentage = Math.round((e.loaded / e.total) * 100);
+
+                            $('#myprogressBar').css('width',percentage + '%');
+                            $('#progress_percent').css('display','block');
+                            $('#progress_percent').text(percentage + '%');
+
+                            if (percentage == 100){
+                                $('#myprogressBar').css('width',0 + '%');
+                                $('#progress_percent').text(0 + '%');
+                                $('.file-names').text('');
+                            }
+                        }
+                    
+                    });
+
+                    return xhr;
+                },
+                type : 'POST',
+                url : '/upload',
+                data : formData,
+                processData : false,
+                contentType : false,
+                success : function() {
+                    alert('Upload complete');
+                }
+            })
+        });
+
+    });
+
+</script>
+
+
+{% endblock content %}
+

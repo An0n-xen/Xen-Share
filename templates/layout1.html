@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="{{ url_for('static',filename='/logo.png')}}" type="image/icon type">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/hover-min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/bootstrap.min.css')}}">
+
+    <title>Xen Share</title>
+
+</head>
+
+
+<body>
+    
+    <nav class="navbar bg-dark" id="main-nav">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img src="/static/logo.png" alt="" width="50" height="40" id="main-logo">
+             Xen Share 
+          </a>
+
+          <div class="Send-Receive">
+            <a href="/send" class='btn btn-primary' id="s-r"> Send </a>
+            <a href="/receive" class='btn btn-outline-primary' id="s-r"> Recieve </a>
+          </div>
+
+          <div class="socials">
+            <a href="https://linktr.ee/fiifiamoah">
+                <img id="xen" src="/static/linkedin.png" width="30" height='30'>
+            </a>
+
+            <a href="https://www.linkedin.com/in/project-legacy-9aa49b239?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bvukw9NE7TPCfSKL5piDUMw%3D%3D">
+                <img id="PL" src="/static/PL_logo.png" width="25" height='25'>
+            </a>
+
+         </div>
+      </nav>
+
+      {% block content %}
+
+      {% endblock %}
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+    
+</body>
+</html>

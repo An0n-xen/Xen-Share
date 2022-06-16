@@ -1,0 +1,176 @@
+body{
+    background-color:white;
+}
+
+#s-r{
+    margin: 10px;
+}
+
+#xen{
+    margin: 10px;
+}
+
+#PL{
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#folder-div{
+    margin: 0;
+    display: grid;
+    grid-template-rows: repeat(2);
+    text-align: center;
+    align-content: center;
+    border-radius: 10px;
+    width: 150px;
+    height: 200px;
+    font-family: monospace;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+#download{
+    text-align: left;
+    bottom: 0;
+}
+
+#download img{
+    border-radius: 2px;
+}
+
+#link a{
+    width: min-content;
+}
+
+.grid{
+    position: relative;
+}
+
+.grid div{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.drop-zone{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.drop-zone_prompt{
+    position: absolute;
+    padding-left: 26px;
+    padding-right: 27px;
+    padding-top: 104px;
+    padding-bottom: 90px;
+    top: 38px;
+    font-weight: bolder;
+    font-size: 18px;
+    font-family: monospace;
+    border: 3px dashed rgb(12, 147, 192);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+
+.drop-zone_prompt:hover{
+    border: 3px solid rgb(12,147,192);
+}
+
+#drop-zone_input{
+    position: absolute;
+    width: 100x;
+    height: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    opacity: 0;
+    top: 50px;
+}
+
+#pc_icon{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#upload_btn{
+    font-size: 18px;
+    font-weight: bold;
+    border: 3px solid;
+    margin: 30px;
+}
+
+#Progress_Status{
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+#myprogressBar{
+    width: 0px;
+    height: 15px;
+    bottom: 0px;
+    background-color: #2995c7;
+    border-radius: 10px;
+}
+
+#progress_percent{
+    display: none;
+}
+
+#message{ 
+    position: absolute;
+    width: 200px;  
+}
+
+#xen-share{
+    position: absolute; 
+    bottom: 40px;
+    left: 170px;
+    right: 170px;
+    text-align: center;
+}
+
+#xen-share h2{
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.container{
+    position: relative;
+    text-align: center;
+}
+
+.home-logo{
+    position: relative;
+    text-align: center;
+}
+
+.home-send-receive{
+    text-align: center;
+}
+
+.home-send-receive a{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 60px;
+    width: 200px;
+}
+
+.file-names{
+    position: absolute;
+    font-family: monospace;
+    font-weight: bold;
+    color: rgb(17, 196, 41);
+}
+
+
