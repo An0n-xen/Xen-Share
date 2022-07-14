@@ -10,11 +10,18 @@ Simple software to share files between computers
 # Receive Page
 ![Screenshot (54)](https://user-images.githubusercontent.com/76828245/173209898-e0993833-9948-45fe-8528-ff38c97d6a76.png)
 
+# Requirements
+### Install the following with pip
+
+1. flask
+2. wekzeug
+3. zipfile
+
 
 # Getting Started
 To run app
 1. Open Xen_share folder 
-2. Click on app.exe
+2. Run the python file `python app.py`
 3. Copy the link address
 4. Paste it in your favourite web broswer 
 5. And Enjoy
