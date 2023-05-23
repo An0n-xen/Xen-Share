@@ -14,9 +14,6 @@ Simple software to share files between computers
 ### Install the following with pip
 
 1. flask
-2. wekzeug
-3. zipfile
-
 
 # Getting Started
 To run app
