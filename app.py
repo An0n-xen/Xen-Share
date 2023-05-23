@@ -26,12 +26,12 @@ def split_folder_file(items):
     items_list = {'folders':[], 'files':[]}
 
     for item in items:
-        if '.' in item:
+        Item = os.path.join(os.getcwd(),item)
+        
+        if os.path.isfile(Item):
             items_list['files'].append(item)
-
         else:
             items_list['folders'].append(item)
-
     return items_list
 
 
