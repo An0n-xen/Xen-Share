@@ -34,7 +34,6 @@ def split_folder_file(items):
             items_list['folders'].append(item)
     return items_list
 
-
 @app.route('/up_folder')
 def upfolder():
     os.chdir('..')
@@ -50,7 +49,13 @@ def viewfile():
 @app.route('/cd')
 def changedir():
     global cur_dir
-    os.chdir(request.args.get('loc'))
+    c_path = request.args.get('loc')
+    
+    if sys.platform == 'linux':
+        inter = c_path.split('\\')
+        c_path = os.path.join(inter[0],inter[1])
+   
+    os.chdir(c_path)
     cur_dir = os.getcwd()    
     return redirect('/receive')
 
