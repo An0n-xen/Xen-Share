@@ -48,9 +48,14 @@ def upfolder():
 def viewfile():
     path = request.args.get("pathloc")
 
-    f_path = path.split("\\")
-    path, f = f_path[0], f_path[1]
-    my_path = os.path.join(path, f)
+    if sys.platform == "linux":
+        f_path = path.split("\\")
+        path, f = f_path[0], f_path[1]
+        my_path = os.path.join(path, f)
+        
+    else:
+        print(path)
+        my_path = os.path.join(cur_dir,path)
 
     return send_file(my_path, mimetype="zip")
 
@@ -135,4 +140,4 @@ def send():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True, port=2006)
+    app.run(host="0.0.0.0", debug=False, port=2006)
