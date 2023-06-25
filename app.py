@@ -1,7 +1,7 @@
 import os, sys
 import io, zipfile
 import socket
-from flask import Flask, render_template, request, redirect
+from flask import Flask, make_response, render_template, request, redirect
 from flask import request, url_for, send_file, flash
 from werkzeug.utils import secure_filename
 
@@ -47,7 +47,7 @@ def upfolder():
 @app.route("/view")
 def viewfile():
     path = request.args.get("pathloc")
-    global cur_dir
+
     f_path = path.split("\\")
     path, f = f_path[0], f_path[1]
     my_path = os.path.join(path, f)
@@ -78,17 +78,20 @@ def download_folder(foldername):
             for file in files:
                 zipf.write(os.path.join(root, file))
     memory_file.seek(0)
+    # response = make_response(send_file(memory_file, as_attachment=True, mimetype="application/zip"))
+    # response.headers["Content-Disposition"] = f"attachment; filename={foldername}.zip"
     return send_file(
-        memory_file, as_attachment=True, attachment_filename=f"{foldername}.zip"
+        memory_file,
+        mimetype="application/zip",
+        as_attachment=True,
+        download_name=f"{foldername}.zp",
     )
 
 
 @app.route("/download/<path:filename>", methods=["GET", "POST"])
 def download(filename):
     my_path = os.path.join(os.getcwd(), filename)
-    return send_file(
-        my_path, mimetype="rar", as_attachment=True, attachment_filename=filename
-    )
+    return send_file(my_path, mimetype="rar", as_attachment=True)
 
 
 @app.route("/receive")
